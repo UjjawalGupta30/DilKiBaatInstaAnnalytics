@@ -1,0 +1,40 @@
+{
+  "name": "Dil Ki Baat \u2014 Daily Orchestration Blueprint",
+  "nodes": [
+    {
+      "name": "Daily 7:30 AM IST Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "notes": "Set timezone to Asia/Kolkata; trigger daily."
+    },
+    {
+      "name": "Fetch trend candidates",
+      "type": "n8n-nodes-base.httpRequest",
+      "notes": "Connect only permitted, reliable trend/news sources. Normalize and timestamp results."
+    },
+    {
+      "name": "AI topic & content planner",
+      "type": "n8n-nodes-base.httpRequest",
+      "notes": "Call your chosen LLM endpoint with brand rules; generate a plan for up to two daily posts."
+    },
+    {
+      "name": "Save drafts",
+      "type": "n8n-nodes-base.postgres",
+      "notes": "Insert ideas and drafts with status needs_review. Do not publish automatically in review mode."
+    },
+    {
+      "name": "Build morning report",
+      "type": "n8n-nodes-base.code",
+      "notes": "Aggregate prior-day account/post insights and draft queue status."
+    },
+    {
+      "name": "Send WhatsApp report",
+      "type": "n8n-nodes-base.httpRequest",
+      "notes": "Connect WhatsApp Business Cloud API or a supported provider; recipient opt-in and approved template may be required."
+    }
+  ],
+  "connections": {},
+  "active": false,
+  "meta": {
+    "note": "Blueprint only; nodes need credentials, versions, and actual connections before activation."
+  }
+}
