@@ -1,35 +1,32 @@
-# Dil Ki Baat AI — Hybrid MVP Starter
+# Dil Ki Baat AI — Live MVP v0.4
 
-This starter is a local-first scaffold for a hybrid content workflow:
-- Next.js dashboard for content drafts and review
-- n8n for scheduled orchestration (workflow blueprint included)
-- PostgreSQL-ready data model
-- Instagram publishing and WhatsApp delivery are integration points, not activated until you configure Meta/WhatsApp credentials and permissions.
+Production-oriented dashboard for the Dil Ki Baat content operating system.
 
-## MVP scope
-1. Maintain content ideas and draft posts.
-2. Review/approve drafts before publishing.
-3. Track publishing state and basic performance fields.
-4. Prepare a morning report payload.
-5. Leave explicit adapters for Instagram Graph API and WhatsApp Cloud API.
+## Working today
+n8n -> Gemini -> Structured Reel -> Supabase -> Vercel dashboard
 
-## Run locally
-Requirements: Node.js 20+ and npm.
+## Local
 
 ```bash
 npm install
+npm run build
 npm run dev
 ```
-Open http://localhost:3000
 
-This is a prototype dashboard with sample data. It does not connect to Instagram or WhatsApp until credentials and API implementation are configured.
+Create `.env.local` from `.env.example`.
 
-## Environment
-Copy `.env.example` to `.env.local` and fill in values when ready. Never commit secrets.
+Required server variables:
+- `SUPABASE_URL`
+- `SUPABASE_SECRET_KEY` (or the existing legacy `SUPABASE_SERVICE_ROLE_KEY`)
+- `DKB_ADMIN_PASSWORD`
 
-## Suggested next milestones
-- Configure Meta developer app and connect the professional Instagram account.
-- Implement OAuth/token storage securely on a server.
-- Implement publishing and insights adapters with official APIs.
-- Configure WhatsApp Cloud API or a supported provider for reports.
-- Deploy the dashboard and n8n with HTTPS, backups, and secret management.
+Health endpoint:
+`/api/health`
+
+## Deploy
+Push `main` to GitHub; Vercel deploys from it.
+
+Never commit secrets.
+
+## Integration status
+Meta/Instagram, Reddit, WhatsApp and live trend sources are intentionally gated until their external account/API setup is complete.

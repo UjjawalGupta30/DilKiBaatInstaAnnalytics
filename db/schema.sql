@@ -9,7 +9,7 @@ CREATE TABLE IF NOT EXISTS content_items (
   caption TEXT,
   asset_url TEXT,
   status TEXT NOT NULL DEFAULT 'draft'
-    CHECK (status IN ('idea','draft','needs_review','approved','scheduled','publishing','published','failed','archived')),
+    CHECK (status IN ('idea','draft','needs_review','approved','scheduled','publishing','published','failed','rejected','archived')),
   scheduled_at TIMESTAMPTZ,
   instagram_media_id TEXT,
   instagram_permalink TEXT,

@@ -3,7 +3,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Dil Ki Baat AI",
-  description: "AI-assisted content planning and review for Dil Ki Baat",
+  description: "AI-assisted content planning, review and publishing operations for Dil Ki Baat",
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
